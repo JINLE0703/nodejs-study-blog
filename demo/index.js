@@ -1,7 +1,14 @@
-const crypto = require('crypto');
+const http = require('http');
 
-const md5 = crypto.createHash('md5');
+const server = http.createServer((req, res) => {
+    res.setHeader('Content-type', 'application/json');
+    res.end(
+        JSON.stringify({
+            errno: 0,
+            msg: 'pm2 test 1'
+        })
+    )
+})
 
-md5.update('Hello, world!');
-
-console.log(md5.digest('hex'));
+server.listen(8000);
+console.log('server is listening')
